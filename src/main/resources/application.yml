@@ -1,0 +1,22 @@
+logging:
+  level:
+    oxyac.shopping: DEBUG
+
+spring:
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+  datasource:
+    url: jdbc:h2:mem:crm
+    driverClassName: org.h2.Driver
+    username: sa
+  h2:
+    console:
+      enabled: true
+
