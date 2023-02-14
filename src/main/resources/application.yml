@@ -1,6 +1,9 @@
+server:
+  port: ${PORT:7880}
+
 logging:
   level:
-    oxyac.shopping: DEBUG
+    oxyac.shopping: ${LOG_LEVEL:INFO}
 
 spring:
   jpa:
@@ -13,7 +16,7 @@ spring:
         jdbc:
           batch_size: 50
   datasource:
-    url: jdbc:h2:mem:crm
+    url: jdbc:h2:${H2_DB_PATH:./shopping}
     driverClassName: org.h2.Driver
     username: sa
   h2:

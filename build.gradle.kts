@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "oxyac"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -24,7 +24,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.modelmapper:modelmapper:3.1.1")
     implementation("org.jsoup:jsoup:1.15.3")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
@@ -33,6 +32,16 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+    archiveBaseName.set("app")
+    archiveVersion.set("")
 }
