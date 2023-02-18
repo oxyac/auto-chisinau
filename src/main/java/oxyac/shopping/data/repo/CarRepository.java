@@ -16,10 +16,12 @@ import java.util.Optional;
 public interface CarRepository extends PagingAndSortingRepository<Car, Long>, JpaRepository<Car, Long> {
     @Query("select c from Car c where c.website.id = ?1")
     Page<Car> findByWebsite_Id(Long id, Pageable pageable);
+
     @Transactional
     @Modifying
     @Query("delete from Car c where c.foreignId < ?1 and c.website = ?2 ")
     void deleteByForeignIDLessThanAndWebsite(Long foreignId, Website website);
+
     @Query("SELECT c.foreignId from Car c where c.website = ?1 order by c.foreignId DESC LIMIT 1 OFFSET 500")
     Optional<Long> findByWebsiteOrderByForeignIdDesc(Website website);
 

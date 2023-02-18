@@ -10,9 +10,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class Car extends AbstractEntity{
+public class Car extends AbstractEntity {
 
-    @Column(unique=true)
+    @Column(unique = true)
     @EqualsAndHashCode.Include
     private Long foreignId;
     @Column(length = 1000)

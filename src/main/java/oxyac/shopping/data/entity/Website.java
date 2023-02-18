@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Website extends AbstractEntity{
+public class Website extends AbstractEntity {
     @Column(length = 1000)
     String uriToParse;
 

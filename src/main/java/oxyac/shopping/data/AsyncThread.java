@@ -8,7 +8,7 @@ import oxyac.shopping.data.parsers.AbstractCarParser;
 public class AsyncThread {
 
     @Async
-    public void startParsing(AbstractCarParser carParser){
+    public void startParsing(AbstractCarParser carParser) {
         carParser.parse();
     }
 }

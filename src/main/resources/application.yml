@@ -16,7 +16,7 @@ spring:
         jdbc:
           batch_size: 50
   datasource:
-    url: jdbc:h2:${H2_DB_PATH:./shopping}
+    url: jdbc:h2:mem:crm
     driverClassName: org.h2.Driver
     username: sa
   h2:

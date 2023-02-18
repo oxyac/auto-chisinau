@@ -19,6 +19,7 @@ public class InterAutoParser extends AbstractCarParser {
         super(websiteRepository, carRepository);
 
     }
+
     @Override
     public void parseUri() {
         Elements els = document.getElementsByClass("cd-offer-blk");
@@ -42,7 +43,7 @@ public class InterAutoParser extends AbstractCarParser {
                 car.setForeignId(Long.valueOf(t[t.length - 1].substring(1)));
                 car.setMileage(mileage.text().split(",")[0]);
                 car.setPrice(price.text());
-                if(car.getPrice().contains("Договор")){
+                if (car.getPrice().contains("Договор")) {
                     car.setPrice("$1");
                 }
                 saveCar(car);

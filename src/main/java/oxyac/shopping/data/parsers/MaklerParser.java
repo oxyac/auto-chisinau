@@ -35,7 +35,7 @@ public class MaklerParser extends AbstractCarParser {
                 car.setLink(name.attr("href"));
                 car.setCarName(name.text());
                 List<String> foreignId = List.of(name.attr("href").split("/"));
-                car.setForeignId(Long.valueOf(foreignId.get(foreignId.size() - 1 )));
+                car.setForeignId(Long.valueOf(foreignId.get(foreignId.size() - 1)));
                 car.setMileage(null);
                 car.setPrice(price.text());
                 saveCar(car);

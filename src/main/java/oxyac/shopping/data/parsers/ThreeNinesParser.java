@@ -17,6 +17,7 @@ public class ThreeNinesParser extends AbstractCarParser {
         super(websiteRepository, carRepository);
 
     }
+
     @Override
     public void parseUri() {
         Elements els = document.getElementsByClass("ads-list-photo");
@@ -35,7 +36,7 @@ public class ThreeNinesParser extends AbstractCarParser {
                 car.setForeignId(Long.valueOf(name.attr("href").split("/")[2]));
                 car.setMileage(mileage.text());
                 car.setPrice(price.text());
-                if(car.getPrice().contains("Договор")){
+                if (car.getPrice().contains("Договор")) {
                     car.setPrice("$1");
                 }
                 saveCar(car);

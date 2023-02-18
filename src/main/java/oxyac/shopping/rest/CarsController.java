@@ -13,7 +13,7 @@ import oxyac.shopping.data.repo.CarRepository;
 import oxyac.shopping.data.repo.WebsiteRepository;
 import oxyac.shopping.rest.dto.CarDto;
 import oxyac.shopping.rest.dto.WebsiteDto;
-import oxyac.shopping.rest.dto.abs.Converter;
+import oxyac.shopping.rest.mapper.MapperService;
 
 import java.util.List;
 
@@ -24,33 +24,33 @@ public class CarsController {
 
     private final CarRepository carRepository;
 
-    private final Converter carConverter;
+    private final MapperService mapperService;
 
     private final WebsiteRepository websiteRepository;
 
-    public CarsController(CarRepository carRepository, Converter carConverter, WebsiteRepository websiteRepository) {
+    public CarsController(CarRepository carRepository, MapperService mapperService, WebsiteRepository websiteRepository) {
         this.carRepository = carRepository;
-        this.carConverter = carConverter;
+        this.mapperService = mapperService;
         this.websiteRepository = websiteRepository;
     }
 
     @GetMapping("/all")
     Page<CarDto> all(Pageable pageable) {
         Page<Car> carPage = carRepository.findAll(pageable);
-        return carPage.map(car -> (CarDto) carConverter.createFrom(car));
+        return carPage.map(mapperService::carToCarDto);
     }
 
     @GetMapping("/site")
     Page<CarDto> site(@RequestParam Long websiteId, Pageable pageable) {
         log.info(String.valueOf(websiteId));
         Page<Car> carPage = carRepository.findByWebsite_Id(websiteId, pageable);
-        return carPage.map(car -> (CarDto) carConverter.createFrom(car));
+        return carPage.map(mapperService::carToCarDto);
     }
 
     @GetMapping("/available")
     List<WebsiteDto> available() {
         List<Website> websites = (List<Website>) websiteRepository.findAll();
-        return websites.stream().map(website -> (WebsiteDto) carConverter.createFrom(website)).toList();
+        return mapperService.websiteToWebsiteDto(websites);
     }
 
     @GetMapping("/test")

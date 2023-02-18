@@ -62,10 +62,10 @@ public abstract class AbstractCarParser implements CarParser {
     void persist() {
         List<Long> existingForeignIds = carRepository.getForeignIdsByWebsite(website).orElse(List.of());
         cars.removeIf(s -> existingForeignIds.contains(s.getForeignId()));
-        try{
+        try {
             carRepository.saveAll(cars);
             cars.clear();
-        } catch (Throwable e){
+        } catch (Throwable e) {
             log.error(e.getMessage());
         }
 

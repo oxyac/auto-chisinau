@@ -1,12 +1,9 @@
 package oxyac.shopping.rest.dto;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import oxyac.shopping.rest.dto.abs.AbstractDto;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class CarDto extends AbstractDto {
+public class CarDto {
 
     private Long id;
     private Long foreignId;
