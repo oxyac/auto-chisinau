@@ -3,9 +3,14 @@ package oxyac.shopping.data.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.Hibernate;
 
-@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
-@Data
+import java.util.Objects;
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,4 +32,16 @@ public class Car extends AbstractEntity {
     @JoinColumn(name = "website_id", nullable = false)
     private Website website;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Car car = (Car) o;
+        return getId() != null && Objects.equals(getId(), car.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
