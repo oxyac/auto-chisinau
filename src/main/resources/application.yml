@@ -3,11 +3,11 @@ server:
 
 logging:
   level:
-    oxyac.shopping: ${LOG_LEVEL:INFO}
+    oxyac.shopping: ${LOG_LEVEL:ERROR}
+    root: ${LOG_LEVEL:ERROR}
 
 spring:
   jpa:
-    show-sql: true
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update

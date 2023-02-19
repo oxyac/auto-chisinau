@@ -22,7 +22,7 @@ public interface CarRepository extends PagingAndSortingRepository<Car, Long>, Jp
     @Query("delete from Car c where c.foreignId < ?1 and c.website = ?2 ")
     void deleteByForeignIDLessThanAndWebsite(Long foreignId, Website website);
 
-    @Query("SELECT c.foreignId from Car c where c.website = ?1 order by c.foreignId DESC LIMIT 1 OFFSET 500")
+    @Query("SELECT c.foreignId from Car c where c.website = ?1 order by c.foreignId DESC LIMIT 1 OFFSET 1000")
     Optional<Long> findByWebsiteOrderByForeignIdDesc(Website website);
 
     @Query("select c.foreignId from Car c where c.website = ?1")

@@ -18,7 +18,7 @@ import oxyac.shopping.rest.mapper.MapperService;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:8081")
 @Slf4j
 public class CarsController {
 
