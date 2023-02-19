@@ -10,10 +10,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Car extends AbstractEntity {
 

@@ -10,10 +10,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 public class Person extends AbstractEntity{
 
     @Column(unique=true)

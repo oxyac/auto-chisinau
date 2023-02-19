@@ -10,10 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 public class Website extends AbstractEntity {
     @Column(length = 1000)
     String uriToParse;
