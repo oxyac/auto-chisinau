@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("cars")
+@RequestMapping("/api/cars")
 @Slf4j
 public class CarsController {
 

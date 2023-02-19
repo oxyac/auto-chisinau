@@ -1,15 +1,16 @@
 package oxyac.shopping.data.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
+import java.util.Objects;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +26,19 @@ public class Website extends AbstractEntity {
 
     @OneToMany(mappedBy = "website", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+    @ToString.Exclude
     private Set<Car> cars;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Website website = (Website) o;
+        return getId() != null && Objects.equals(getId(), website.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

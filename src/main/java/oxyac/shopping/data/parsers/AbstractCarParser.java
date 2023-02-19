@@ -18,12 +18,10 @@ import java.util.Set;
 @Slf4j
 public abstract class AbstractCarParser implements CarParser {
 
+    protected final WebsiteRepository websiteRepository;
+    private final CarRepository carRepository;
     protected Document document;
     protected URI host;
-    protected final WebsiteRepository websiteRepository;
-
-    private final CarRepository carRepository;
-
     protected Set<Car> cars = new HashSet<>();
 
     protected Website website = new Website();
@@ -31,11 +29,10 @@ public abstract class AbstractCarParser implements CarParser {
     public AbstractCarParser(WebsiteRepository websiteRepository, CarRepository carRepository) {
         this.websiteRepository = websiteRepository;
         this.carRepository = carRepository;
-
     }
 
     public void parse() {
-        log.info("Start Seed");
+        log.info("Start seed on URI: {}", getUriToParse());
         if (getUriToParse().equals("")) {
             return;
         }
@@ -43,7 +40,7 @@ public abstract class AbstractCarParser implements CarParser {
             document = Jsoup.connect(getUriToParse()).get();
             host = new URI(getUriToParse());
         } catch (Throwable e) {
-            log.error(e.getMessage());
+            log.error("Failed to fetch URI: " + getUriToParse(), e);
             return;
         }
         parseWebsiteData();
@@ -66,7 +63,7 @@ public abstract class AbstractCarParser implements CarParser {
             carRepository.saveAll(cars);
             cars.clear();
         } catch (Throwable e) {
-            log.error(e.getMessage());
+            log.error("Failed to persist cars", e);
         }
 
     }
