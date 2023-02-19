@@ -1,4 +1,4 @@
 #!/bin/sh
 
-systemctl start nginx
+nginx
 java -jar app.jar
