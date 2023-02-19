@@ -26,7 +26,7 @@ public class CarSeeder {
         this.asyncThread = asyncThread;
     }
 
-    @Scheduled(fixedDelay = 2, timeUnit = TimeUnit.HOURS)
+    @Scheduled(fixedDelay = 15, timeUnit = TimeUnit.MINUTES)
     public void seedCars() {
         carParsers.forEach(asyncThread::startParsing);
     }
