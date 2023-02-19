@@ -22,4 +22,4 @@ COPY --from=build-server /root/build-server/start.sh /root/start.sh
 
 WORKDIR /root
 RUN chmod +x start.sh
-ENTRYPOINT ["/bin/sh", "start.sh"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

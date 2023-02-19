@@ -32,13 +32,13 @@ public class Car extends AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return getId() != null && Objects.equals(getId(), car.getId());
+        return Objects.equals(foreignId, car.foreignId);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(foreignId);
     }
 }
