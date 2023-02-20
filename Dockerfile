@@ -1,5 +1,6 @@
 FROM node as build-ui
 WORKDIR /root/build-ui
+ARG VITE_API_BASE_URL=https://auto.frozendrizzle.com/api
 RUN git clone https://github.com/oxyac/auto-chisinau-ui.git . \
     && npm install  \
     && npm run build
@@ -18,8 +19,6 @@ RUN rm -rf /usr/share/nginx/html/*
 
 COPY --from=build-ui /root/build-ui/dist /root/build-ui/dist
 COPY --from=build-server /root/build-server/build/libs/app.jar /root/app.jar
-COPY --from=build-server /root/build-server/start.sh /root/start.sh
 
 WORKDIR /root
-RUN chmod +x start.sh
 ENTRYPOINT ["java", "-jar", "app.jar"]
