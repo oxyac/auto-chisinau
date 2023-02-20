@@ -15,7 +15,6 @@ import oxyac.shopping.rest.mapper.MapperService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/api/cars")
 @Slf4j
 public class CarsController {
@@ -40,7 +39,6 @@ public class CarsController {
 
     @GetMapping("/site")
     Page<CarDto> site(@RequestParam Long websiteId, Pageable pageable) {
-        log.info(String.valueOf(websiteId));
         Page<Car> carPage = carRepository.findByWebsite_Id(websiteId, pageable);
         return carPage.map(mapperService::carToCarDto);
     }

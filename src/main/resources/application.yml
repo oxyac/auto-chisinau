@@ -3,7 +3,7 @@ server:
 
 logging:
   level:
-    oxyac.shopping: ${LOG_LEVEL:ERROR}
+    oxyac.shopping: ${LOG_LEVEL:DEBUG}
 
 spring:
   jpa:

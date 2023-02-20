@@ -9,16 +9,12 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @Entity
 public class Website extends AbstractEntity {
     @Column(length = 1000)
     String uriToParse;
-
     String host;
-
     String iconUri;
-
     String protocol;
 
     @OneToMany(mappedBy = "website", fetch = FetchType.LAZY,
@@ -37,5 +33,12 @@ public class Website extends AbstractEntity {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Website{" +
+                "host='" + host + '\'' +
+                '}';
     }
 }
