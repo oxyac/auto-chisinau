@@ -82,7 +82,9 @@ public abstract class AbstractCarParser implements CarParser {
         website.setHost(host.getHost());
         website.setUriToParse(getUriToParse());
         website.setIconUri(iconUri);
-        websiteRepository.save(website);
+        if(websiteRepository.findByUriToParse(getUriToParse()) == null){
+            websiteRepository.save(website);
+        }
     }
 
     void saveCar(Car car) {
