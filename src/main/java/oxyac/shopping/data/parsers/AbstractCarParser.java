@@ -70,6 +70,11 @@ public abstract class AbstractCarParser implements CarParser {
 
     @Override
     public void parseWebsiteData() {
+        website = websiteRepository.findByUriToParse(getUriToParse());
+        if(website.getId() != null){
+            return;
+        }
+        website = new Website();
         Element e = document.head().select("link[href~=.*\\.ico]").first();
         String iconUri = e != null ? e.attr("href") : parseFavicon();
         try {
@@ -82,9 +87,7 @@ public abstract class AbstractCarParser implements CarParser {
         website.setHost(host.getHost());
         website.setUriToParse(getUriToParse());
         website.setIconUri(iconUri);
-        if(websiteRepository.findByUriToParse(getUriToParse()) == null){
-            websiteRepository.save(website);
-        }
+        websiteRepository.save(website);
     }
 
     void saveCar(Car car) {
