@@ -71,7 +71,7 @@ public abstract class AbstractCarParser implements CarParser {
     @Override
     public void parseWebsiteData() {
         website = websiteRepository.findByUriToParse(getUriToParse());
-        if(website.getId() != null){
+        if(website != null && website.getId() != null){
             return;
         }
         website = new Website();
