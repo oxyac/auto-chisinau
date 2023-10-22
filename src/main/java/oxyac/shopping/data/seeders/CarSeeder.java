@@ -28,6 +28,7 @@ public class CarSeeder {
 
     @Scheduled(fixedDelay = 15, timeUnit = TimeUnit.MINUTES)
     public void seedCars() {
+        log.info("Seeding...");
         carParsers.forEach(asyncThread::startParsing);
     }
 }
