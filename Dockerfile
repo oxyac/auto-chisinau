@@ -1,6 +1,6 @@
 FROM node as build-ui
 WORKDIR /root/build-ui
-ARG VITE_API_BASE_URL
+ARG VITE_API_BASE_URL=https://auto.oxyac.dev/api
 RUN git clone https://github.com/oxyac/auto-chisinau-ui.git . \
     && npm install  \
     && npm run build
