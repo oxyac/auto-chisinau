@@ -13,7 +13,7 @@ import oxyac.shopping.data.repo.WebsiteRepository;
 @Component
 public class ThreeNinesParser extends AbstractCarParser {
 
-    private static final String URI = "https://999.md/ru/list/transport/cars?hide_duplicates=no&applied=1&show_all_checked_childrens=no&ef=260,6,5,4112,2029,1279,2,4274,2339,2303,1077&r_6_2_from=&r_6_2_to=10000&r_6_2_unit=eur&r_6_2_negotiable=yes&o_4112_795=18895&r_2_103_from=2000&r_2_103_to=&r_2_103_unit=cm3&r_4274_107_from=&r_4274_107_to=";
+    private static final String URI = "https://999.md/ro/list/transport/cars?hide_duplicates=no&applied=1&show_all_checked_childrens=no&ef=260,6,5,4112,2029,1279,2,4274,2339,2303,1077&r_6_2_from=10000&r_6_2_to=20000&r_6_2_unit=eur&r_6_2_negotiable=yes&o_4112_795=18895&r_2_103_from=2000&r_2_103_to=&r_2_103_unit=cm3&r_4274_107_from=&r_4274_107_to=";
 
     public ThreeNinesParser(WebsiteRepository websiteRepository, CarRepository carRepository) {
         super(websiteRepository, carRepository);

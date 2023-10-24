@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class InterAutoParser extends AbstractCarParser {
 
-    private static final String URI = "https://interauto.md/automobile/?search_keyword=&make=0&model=0&price_min=1499&price_max=10000&vehicle_year_min=1938&vehicle_year_max=2023&mileage_min=0&mileage_max=930734&vehicle_transmission=&vehicle_drive=&vehicle_exterior_color=&vehicle_cilinder_min=0&vehicle_cilinder_max=14681&vehicle_body_style=&vehicle_seats_min=2&vehicle_seats_max=52&vehicle_location=&tip_oferta=auto-de-vanzare&orderby=";
+    private static final String URI = "https://interauto.md/automobile/?search_keyword=&make=0&model=0&price_min=10000&price_max=20000&vehicle_year_min=1938&vehicle_year_max=2023&mileage_min=1&mileage_max=930734&vehicle_transmission=&vehicle_cilinder_min=0&vehicle_cilinder_max=14681&vehicle_seats_min=2&vehicle_seats_max=52&tip_oferta=auto-de-vanzare&orderby=";
 
     public InterAutoParser(WebsiteRepository websiteRepository, CarRepository carRepository) {
         super(websiteRepository, carRepository);
